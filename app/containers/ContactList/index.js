@@ -12,16 +12,11 @@ import { FormattedMessage } from 'react-intl';
 import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
 
-import { useInjectSaga } from 'utils/injectSaga';
-import { useInjectReducer } from 'utils/injectReducer';
-import makeSelectContactList from './selectors';
-import reducer from './reducer';
-import saga from './saga';
+import { makeSelectContactList } from 'containers/App/selectors';
 import messages from './messages';
 
-export function ContactList() {
-  useInjectReducer({ key: 'contactList', reducer });
-  useInjectSaga({ key: 'contactList', saga });
+export function ContactList({ contactList }) {
+  const listItems = contactList.map(contact => <li>{contact.name}</li>);
 
   return (
     <div>
@@ -29,29 +24,21 @@ export function ContactList() {
         <title>ContactList</title>
         <meta name="description" content="Description of ContactList" />
       </Helmet>
+      {listItems}
       <FormattedMessage {...messages.header} />
     </div>
   );
 }
 
 ContactList.propTypes = {
-  dispatch: PropTypes.func.isRequired,
+  contactList: PropTypes.array,
 };
 
 const mapStateToProps = createStructuredSelector({
   contactList: makeSelectContactList(),
 });
 
-function mapDispatchToProps(dispatch) {
-  return {
-    dispatch,
-  };
-}
-
-const withConnect = connect(
-  mapStateToProps,
-  mapDispatchToProps,
-);
+const withConnect = connect(mapStateToProps);
 
 export default compose(
   withConnect,
