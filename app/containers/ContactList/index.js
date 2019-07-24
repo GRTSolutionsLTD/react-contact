@@ -8,10 +8,12 @@ import ReactTable from "react-table";
 import "react-table/react-table.css";
 import { makeSelectContactList } from 'containers/App/selectors';
 import { filter, includes } from 'lodash';
+import { NavLink } from "react-router-dom";
 
 export function ContactList({ contactList }) {
   const [contactFilter, setContactFilter] = useState("");
   const [listItems, setListItems] = useState(contactList);
+  // const activeStyle = { color: "#F15B2A" };
 
   const handleChange = event => {
     const filterValue = event.target.value;
@@ -43,18 +45,16 @@ export function ContactList({ contactList }) {
               Header: "Birthday",
               accessor: "birthday"
             },
-            {
-              Header: "Birthday",
-              accessor: "birthday"
-            },
           ]}
           defaultPageSize={5}
           className="-striped -highlight"
           showPaginationBottom
+          striped bordered hover
         />
-        {/* <ViewContact id="5d35a6e4912582c23b684694"> </ViewContact> */}
-        <link></link>
         <br />
+        <NavLink to="/contactFriends/5d35a6e4912582c23b684694" exact>
+          View Contact
+        </NavLink>
       </div>
       {/* <FormattedMessage {...messages.header} /> */}
     </div>
