@@ -33,6 +33,9 @@ export function ContactFriends(props) {
           <meta name="description" content="Description of ContactFriends" />
         </Helmet>
         Hi {currentContact.name}!!
+        {
+          currentContact.friends.map(friend => <li> {friend.name}</li>)
+        }
         <form onSubmit={handleSubmit}>
           <input
             type="text"
