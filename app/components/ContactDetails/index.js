@@ -32,7 +32,7 @@ function ContactDetails({contact}) {
                 type="text"
                 name="id"
                 id="exampleId"
-               
+                
               />
             </FormGroup>
           </Col>
@@ -156,7 +156,7 @@ function ContactDetails({contact}) {
           </Col>
         </Row>
       </Form>
-      <NavLink to="/ContactFriends" exact>
+      <NavLink to="/ContactFriends/{currentContact._id}" exact>
         view friends
       </NavLink>
     </div>
