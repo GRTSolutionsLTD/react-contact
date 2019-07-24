@@ -1,9 +1,3 @@
-/**
- *
- * ViewContact
- *
- */
-
 import React, { memo } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
@@ -14,9 +8,11 @@ import { find } from 'lodash';
 import { makeSelectContactList } from 'containers/App/selectors';
 import ContactDetails from '../../components/ContactDetails';
 
-export function ViewContact({ contactList }) {
-  const id = '5d35a6e4912582c23b684694';
-  const contacts = find(contactList, { _id: id });
+export function ViewContact(props) {
+  // eslint-disable-next-line react/prop-types
+  const { match: { params }, contactList } = props;
+  const currentContactId = params.contactId;
+  const currentContact = find(contactList, { _id: currentContactId });
   // const contacts = contactList;
   // const contacts = contactList.filter(item => item._id.includes('5d35a6e473ba203bc8740c16'));
   // const contacts = contactList.filter(item => item._id.includes(idContact));
@@ -27,7 +23,7 @@ export function ViewContact({ contactList }) {
         <title>ViewContact</title>
         <meta name="description" content="Description of ViewContact" />
       </Helmet>
-      <ContactDetails contact={contacts} />
+      <ContactDetails contact={currentContact} />
     </div>
   );
 }
