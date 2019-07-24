@@ -11,24 +11,20 @@ import { Helmet } from 'react-helmet';
 import { FormattedMessage } from 'react-intl';
 import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
-
-import { useInjectSaga } from 'utils/injectSaga';
-import { useInjectReducer } from 'utils/injectReducer';
 import makeSelectViewContact from './selectors';
-import reducer from './reducer';
-import saga from './saga';
 import messages from './messages';
 
-export function ViewContact() {
-  useInjectReducer({ key: 'viewContact', reducer });
-  useInjectSaga({ key: 'viewContact', saga });
-
+export function ViewContact(props) {
+  // eslint-disable-next-line react/prop-types
+  const { match: { params } } = props;
+  const currentContactId=params.contactId;
   return (
     <div>
       <Helmet>
         <title>ViewContact</title>
         <meta name="description" content="Description of ViewContact" />
       </Helmet>
+      <p>{currentContactId}</p>
       <FormattedMessage {...messages.header} />
     </div>
   );

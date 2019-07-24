@@ -15,8 +15,8 @@ export default function App() {
       <Switch>
         <Route exact path="/" component={HomePage} />
         <Route path="/ContactList" component={ContactList} />
-        <Route path="/ViewContact" component={ViewContact} />
-        <Route path="/ContactFriends" component={ContactFriend} />
+        <Route path="/ViewContact/:contactId" component={ViewContact} />
+        <Route path="/ContactFriends/:contactId" component={ContactFriend} />
         <Route component={NotFoundPage} />
       </Switch>
       <GlobalStyle />
