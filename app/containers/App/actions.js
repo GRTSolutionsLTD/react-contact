@@ -15,7 +15,7 @@
  *    }
  */
 
-import { GET_CONTACTS } from './constants';
+import { GET_CONTACTS, GET_CONTACT } from './constants';
 
 /**
  * Load the contacts list
@@ -26,5 +26,18 @@ export function getContacts(contacts) {
   return {
     type: GET_CONTACTS,
     contacts
+  };
+}
+
+
+/**
+ * Get the contact by Id
+ *
+ * @return {object} An action object with a type of GET_CONTACT
+ */
+export function getContact(contactId) {
+  return {
+    type: GET_CONTACT,
+    contactId
   };
 }

@@ -1,59 +1,75 @@
-/**
- *
- * ContactFriends
- *
- */
-
-import React, { memo } from 'react';
+import React, { memo, useState } from 'react';
+import { createStructuredSelector } from 'reselect';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Helmet } from 'react-helmet';
-import { FormattedMessage } from 'react-intl';
-import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
+import { getContact } from '../App/actions'
+import { makeSelectContact } from '../App/selectors';
 
-import { useInjectSaga } from 'utils/injectSaga';
-import { useInjectReducer } from 'utils/injectReducer';
-import makeSelectContactFriends from './selectors';
-import reducer from './reducer';
-import saga from './saga';
-import messages from './messages';
 
-export function ContactFriends() {
-  useInjectReducer({ key: 'contactFriends', reducer });
-  useInjectSaga({ key: 'contactFriends', saga });
+// import { find } from 'lodash';
+export function ContactFriends(props) {
+  // eslint-disable-next-line react/prop-types
+  const { match: { params }, getCurrentContact, currentContact } = props;
+  const currentContactId = params.contactId;
+  getCurrentContact(currentContactId);
 
-  return (
-    <div>
-      <Helmet>
-        <title>ContactFriends</title>
-        <meta name="description" content="Description of ContactFriends" />
-      </Helmet>
-      <FormattedMessage {...messages.header} />
-    </div>
-  );
+  const [friendName, setFriendName] = useState('');
+  // const id = "5d35a6e4912582c23b684694";
+  const handleSubmit = event => {
+    event.preventDefault();
+    setFriendName('');
+  };
+  const handleChange = event => {
+    event.preventDefault();
+    setFriendName(event.target.value);
+  };
+  if (currentContact!==undefined) {
+    return (
+      <div>
+        <Helmet>
+          <title>ContactFriends</title>
+          <meta name="description" content="Description of ContactFriends" />
+        </Helmet>
+        Hi {currentContact.name}!!
+        <form onSubmit={handleSubmit}>
+          <input
+            type="text"
+            value={friendName}
+            onChange={handleChange}
+            placeholder="Friendname"
+            required
+          />
+          <input type="submit" value="add friend"></input>
+        </form>
+        <br />
+      </div>
+
+    );
+  }
 }
 
+
 ContactFriends.propTypes = {
-  dispatch: PropTypes.func.isRequired,
+  getCurrentContact: PropTypes.func
 };
 
-const mapStateToProps = createStructuredSelector({
-  contactFriends: makeSelectContactFriends(),
-});
-
-function mapDispatchToProps(dispatch) {
+export function mapDispatchToProps(dispatch) {
   return {
-    dispatch,
+    getCurrentContact: contactId => dispatch(getContact(contactId)),
   };
 }
 
-const withConnect = connect(
-  mapStateToProps,
-  mapDispatchToProps,
-);
+const mapStateToProps = createStructuredSelector({
+  currentContact: makeSelectContact(),
+});
+
+
+const withConnect = connect(mapStateToProps, mapDispatchToProps);
 
 export default compose(
   withConnect,
   memo,
 )(ContactFriends);
+
