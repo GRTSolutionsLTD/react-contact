@@ -1,5 +1,5 @@
 import { createSelector } from 'reselect';
-import { initialState } from './reducer';
+import { initialState } from '../App/reducer';
 
 /**
  * Direct selector to the contactList state domain
@@ -18,7 +18,7 @@ const selectContactListDomain = state => state.contactList || initialState;
 const makeSelectContactList = () =>
   createSelector(
     selectContactListDomain,
-    substate => substate,
+    globalState => globalState.contactList
   );
 
 export default makeSelectContactList;
