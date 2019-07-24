@@ -5,15 +5,17 @@ import { Helmet } from 'react-helmet';
 import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
 import ReactTable from "react-table";
-import "react-table/react-table.css";
+// import "react-table/react-table.css";
 import { makeSelectContactList } from 'containers/App/selectors';
 import { filter, includes } from 'lodash';
 import { NavLink } from "react-router-dom";
+import "containers/ContactList/contactList.scss"
 
 export function ContactList({ contactList }) {
   const [contactFilter, setContactFilter] = useState("");
   const [listItems, setListItems] = useState(contactList);
   // const activeStyle = { color: "#F15B2A" };
+
 
   const handleChange = event => {
     const filterValue = event.target.value;
@@ -45,6 +47,13 @@ export function ContactList({ contactList }) {
               Header: "Birthday",
               accessor: "birthday"
             },
+            {
+              Header: "Options",
+              Cell:
+                <NavLink to="/contactFriends/5d35a6e4912582c23b684694" exact>
+                  View Contact
+                </NavLink>
+            }
           ]}
           defaultPageSize={5}
           className="-striped -highlight"
@@ -52,9 +61,6 @@ export function ContactList({ contactList }) {
           striped bordered hover
         />
         <br />
-        <NavLink to="/contactFriends/5d35a6e4912582c23b684694" exact>
-          View Contact
-        </NavLink>
       </div>
       {/* <FormattedMessage {...messages.header} /> */}
     </div>
