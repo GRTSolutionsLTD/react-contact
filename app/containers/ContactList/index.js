@@ -7,14 +7,19 @@ import { compose } from 'redux';
 import ReactTable from "react-table";
 import "react-table/react-table.css";
 import { makeSelectContactList } from 'containers/App/selectors';
+import { filter, includes } from 'lodash';
 
 export function ContactList({ contactList }) {
   const [contactFilter, setContactFilter] = useState("");
   const [listItems, setListItems] = useState(contactList);
+
   const handleChange = event => {
-    setContactFilter(event.target.value);
-    setListItems(listItems.filter(contact => String(contact.name).includes(contactFilter)));
+    const filterValue = event.target.value;
+    setContactFilter(filterValue);
+    const filteredList = filter(contactList, contact => includes(contact.name, filterValue));
+    setListItems(filteredList);
   }
+
   return (
     <div>
       <Helmet>
