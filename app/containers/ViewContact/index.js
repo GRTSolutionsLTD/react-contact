@@ -8,20 +8,16 @@ import React, { memo } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Helmet } from 'react-helmet';
-import { FormattedMessage } from 'react-intl';
 import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
 
-import { useInjectSaga } from 'utils/injectSaga';
-import { useInjectReducer } from 'utils/injectReducer';
-import makeSelectViewContact from './selectors';
-import reducer from './reducer';
-import saga from './saga';
-import messages from './messages';
+import { makeSelectContactList } from 'containers/App/selectors';
+import ContactDetails from '../../components/ContactDetails';
 
-export function ViewContact() {
-  useInjectReducer({ key: 'viewContact', reducer });
-  useInjectSaga({ key: 'viewContact', saga });
+export function ViewContact({ contactList }) {
+  const contacts = contactList;
+  // const contacts = contactList.filter(item => item._id.includes('5d35a6e473ba203bc8740c16'));
+  // const contacts = contactList.filter(item => item._id.includes(idContact));
 
   return (
     <div>
@@ -29,29 +25,21 @@ export function ViewContact() {
         <title>ViewContact</title>
         <meta name="description" content="Description of ViewContact" />
       </Helmet>
-      <FormattedMessage {...messages.header} />
+      <ContactDetails contact={contacts[0]} />
     </div>
   );
 }
 
 ViewContact.propTypes = {
-  dispatch: PropTypes.func.isRequired,
+  idContact: PropTypes,
+  contactList: PropTypes.array,
 };
 
 const mapStateToProps = createStructuredSelector({
-  viewContact: makeSelectViewContact(),
+  contactList: makeSelectContactList(),
 });
 
-function mapDispatchToProps(dispatch) {
-  return {
-    dispatch,
-  };
-}
-
-const withConnect = connect(
-  mapStateToProps,
-  mapDispatchToProps,
-);
+const withConnect = connect(mapStateToProps);
 
 export default compose(
   withConnect,
