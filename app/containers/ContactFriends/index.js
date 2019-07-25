@@ -6,15 +6,15 @@ import { Helmet } from 'react-helmet';
 import { compose } from 'redux';
 import { getContact } from '../App/actions'
 import { makeSelectContact } from '../App/selectors';
-
-
+// eslint-disable-next-line import/no-unresolved
+import "containers/ContactFriends/contactFriends.scss"
 // import { find } from 'lodash';
+
 export function ContactFriends(props) {
   // eslint-disable-next-line react/prop-types
   const { match: { params }, getCurrentContact, currentContact } = props;
   const currentContactId = params.contactId;
   getCurrentContact(currentContactId);
-
   const [friendName, setFriendName] = useState('');
   // const id = "5d35a6e4912582c23b684694";
   const handleSubmit = event => {
@@ -27,14 +27,15 @@ export function ContactFriends(props) {
   };
   if (currentContact!==undefined) {
     return (
-      <div>
+      <div className="col-centered" >
         <Helmet>
           <title>ContactFriends</title>
           <meta name="description" content="Description of ContactFriends" />
         </Helmet>
         Hi {currentContact.name}!!
+        <h1>friends</h1>
         {
-          currentContact.friends.map(friend => <li> {friend.name}</li>)
+          currentContact.friends.map(friend => <li key="{friend.id}" className="list-group-item"> {friend.name}</li>)
         }
         <form onSubmit={handleSubmit}>
           <input
@@ -44,7 +45,8 @@ export function ContactFriends(props) {
             placeholder="Friendname"
             required
           />
-          <input type="submit" value="add friend"></input>
+  
+          <input type="submit" className="btn btn-primary" value="add friend"></input>
         </form>
         <br />
       </div>
