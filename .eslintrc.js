@@ -35,7 +35,8 @@ module.exports = {
     'import/no-webpack-loader-syntax': 0,
     'import/prefer-default-export': 0,
     'no-case-declarations': 0,
-    'no-param-reassign':0,
+    'no-param-reassign': 0,
+    'no-underscore-dangle': 0,
     indent: [
       2,
       2,
@@ -80,7 +81,7 @@ module.exports = {
     'redux-saga/no-yield-in-race': 2,
     'redux-saga/yield-effects': 2,
     'require-yield': 0,
-    'react/no-unused-prop-types': 0
+    'react/no-unused-prop-types': 0,
   },
   settings: {
     'import/resolver': {

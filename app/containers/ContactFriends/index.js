@@ -14,9 +14,8 @@ export function ContactFriends(props) {
   // eslint-disable-next-line react/prop-types
   const { match: { params }, getCurrentContact, currentContact } = props;
   const currentContactId = params.contactId;
-  getCurrentContact(currentContactId);
+  getCurrentContact(currentContactId);  
   const [friendName, setFriendName] = useState('');
-  // const id = "5d35a6e4912582c23b684694";
   const handleSubmit = event => {
     event.preventDefault();
     setFriendName('');
@@ -25,7 +24,7 @@ export function ContactFriends(props) {
     event.preventDefault();
     setFriendName(event.target.value);
   };
-  if (currentContact!==undefined) {
+  if (currentContact !== undefined) {
     return (
       <div className="col-centered" >
         <Helmet>
