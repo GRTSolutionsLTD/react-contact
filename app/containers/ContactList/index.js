@@ -52,7 +52,7 @@ export function ContactList({ contactList }) {
           striped bordered hover
         />
         <br />
-        <NavLink to="/ViewContact/5d35a6e4912582c23b684694" exact>
+        <NavLink to="/ViewContact/5d35a6e42dcadec8e8bfc029" exact>
           View Contact
         </NavLink>
       </div>

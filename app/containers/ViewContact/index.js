@@ -5,45 +5,55 @@
  */
 
 import React, { memo } from 'react';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Helmet } from 'react-helmet';
 import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
-// import { find } from 'lodash';
-import { makeSelectContactList } from 'containers/App/selectors';
-// import ContactDetails from '../../components/ContactDetails';
+import ContactDetails from '../../components/ContactDetails';
+import { getContact } from '../App/actions';
+import { makeSelectContact } from '../App/selectors';
 
-export function ViewContact() {
+export function ViewContact(props) {
+  const {
+    match: { params },
+    getCurrentContact,
+    currentContact,
+  } = props;
+  const currentContactId = params.contactId;
+  getCurrentContact(currentContactId);
 
-  // const id = '5d35a6e4912582c23b684694';
-  // const contacts = find(contactList, { _id: id });
-  // const contacts = contactList;
-  // const contacts = contactsList.filter(item => item._id.includes(idContact));
-  // const contacts = contactList.filter(item => item._id.includes(idContact));
-
-  return (
-    <div>
-      <Helmet>
-        <title>ViewContact</title>
-        <meta name="description" content="Description of ViewContact" />
-      </Helmet>
-  
-      
-      {/* <ContactDetails contact={contacts} /> */}
-    </div>
-  );
+  if (currentContact !== undefined) {
+    return (
+      <div>
+        <Helmet>
+          <title>ViewContact</title>
+          <meta name="description" content="Description of ViewContact" />
+        </Helmet>
+        <ContactDetails contact={currentContact} />
+      </div>
+    );
+  }
 }
 
-// ViewContact.propTypes = {
-//   contactList: PropTypes.array,
-// };
+ViewContact.propTypes = {
+  getCurrentContact: PropTypes.func,
+};
+
+export function mapDispatchToProps(dispatch) {
+  return {
+    getCurrentContact: contactId => dispatch(getContact(contactId)),
+  };
+}
 
 const mapStateToProps = createStructuredSelector({
-  contactList: makeSelectContactList(),
+  currentContact: makeSelectContact(),
 });
 
-const withConnect = connect(mapStateToProps);
+const withConnect = connect(
+  mapStateToProps,
+  mapDispatchToProps,
+);
 
 export default compose(
   withConnect,

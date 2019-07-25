@@ -13,7 +13,7 @@ export default function App() {
     <div>
       <Switch>
         <Route exact path="/" component={ContactList} />
-        <Route path="/ContactList" component={ContactList} /> 
+        <Route path="/ContactList" component={ContactList} />
         <Route path="/ViewContact/:contactId" component={ViewContact} />
         <Route path="/ContactFriends/:contactId" component={ContactFriend} />
         <Route component={NotFoundPage} />

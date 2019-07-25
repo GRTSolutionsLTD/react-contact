@@ -5,25 +5,19 @@
  */
 
 import React, { memo } from 'react';
-import {
-  Col,
-  Row,
-  Form,
-  FormGroup,
-  Label,
-  Input,
-} from 'reactstrap';
+import { Col, Row, Form, FormGroup, Label, Input } from 'reactstrap';
 import { NavLink } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import 'components/ContactDetails/contactDetails.scss'
 // import styled from 'styled-components';
 
-
-function ContactDetails({contact}) {
-  const currentContact=contact;
+function ContactDetails({ contact }) {
+  const currentContact = contact;
+  const to= `/ContactFriends/${currentContact._id}`;
   return (
     <div>
-      <h1>{currentContact.name}</h1>
-      <Form>
+      <h1 align="center">{currentContact.name}</h1>
+      <Form class="center">
         <Row form>
           <Col md={3}>
             <FormGroup>
@@ -32,7 +26,7 @@ function ContactDetails({contact}) {
                 type="text"
                 name="id"
                 id="exampleId"
-                
+                value={currentContact._id}
               />
             </FormGroup>
           </Col>
@@ -156,7 +150,7 @@ function ContactDetails({contact}) {
           </Col>
         </Row>
       </Form>
-      <NavLink to="/ContactFriends/{currentContact._id}" exact>
+      <NavLink class="href" to={to} exact>
         view friends
       </NavLink>
     </div>
