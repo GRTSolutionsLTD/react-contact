@@ -13,7 +13,7 @@ export function ContactFriends(props) {
   // eslint-disable-next-line react/prop-types
   const { match: { params }, getCurrentContact, currentContact } = props;
   const currentContactId = params.contactId;
-  getCurrentContact(currentContactId);
+  getCurrentContact(currentContactId);  
   const [friendName, setFriendName] = useState('');
   const handleSubmit = event => {
     event.preventDefault();

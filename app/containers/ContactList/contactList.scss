@@ -1,0 +1,28 @@
+body {
+    font-family: -apple-system,
+       BlinkMacSystemFont,
+       "Segoe UI",
+       Roboto,
+       "Helvetica Neue",
+       Arial, "Noto Sans",
+       sans-serif,
+       "Apple Color Emoji",
+       "Segoe UI Emoji",
+       "Segoe UI Symbol",
+       "Noto Color Emoji";
+ }
+ 
+ .ReactTable {
+    color: rgba(12, 132, 202, 0.774);
+    text-align: center;
+    width: 50%;
+    height: 70vh;
+    display: flex;
+    justify-content: center;
+    padding: 1%;
+    margin: auto;
+    margin-top: 5%;
+ }
+ .rt-thead{
+    font-size: 20px;
+ }

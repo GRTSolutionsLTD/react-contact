@@ -9,7 +9,7 @@ import { makeSelectContactList } from 'containers/App/selectors';
 import { filter, includes } from 'lodash';
 import { NavLink } from "react-router-dom";
 import "react-table/react-table.css";
-// import "containers/ContactList/contactList.scss"
+import "containers/ContactList/contactList.scss"
 
 export function ContactList({ contactList }) {
   const [contactFilter, setContactFilter] = useState("");
