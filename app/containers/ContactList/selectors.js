@@ -1,11 +1,11 @@
 import { createSelector } from 'reselect';
-import { initialState } from '../App/reducer';
+// import { initialState } from '../App/reducer';
 
 /**
  * Direct selector to the contactList state domain
  */
 
-const selectContactListDomain = state => state.contactList || initialState;
+const selectContactListDomain = state => state.contactList;
 
 /**
  * Other specific selectors

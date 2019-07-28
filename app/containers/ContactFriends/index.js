@@ -7,7 +7,7 @@ import { compose } from 'redux';
 import { getContact } from '../App/actions'
 import { makeSelectContact } from '../App/selectors';
 // eslint-disable-next-line import/no-unresolved
-import "containers/ContactFriends/contactFriends.scss"
+// import "containers/ContactFriends/contactFriends.scss"
 // import { find } from 'lodash';
 
 export function ContactFriends(props) {

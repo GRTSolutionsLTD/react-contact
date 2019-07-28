@@ -8,7 +8,7 @@ import React, { memo } from 'react';
 import { Col, Row, Form, FormGroup, Label, Input } from 'reactstrap';
 import { NavLink } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import 'components/ContactDetails/contactDetails.scss'
+//import 'components/ContactDetails/contactDetails.scss'
 // import styled from 'styled-components';
 
 function ContactDetails({ contact }) {
