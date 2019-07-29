@@ -11,7 +11,7 @@ import { getNews } from "./actions"
 
 import GlobalStyle from '../../global-styles';
 
-export function App({getContactList}) {
+export function App({ getContactList }) {
   getContactList();
   return (
     <div>
@@ -31,9 +31,7 @@ App.propTypes = {
   getContactList: PropTypes.func
 };
 
-// const mapStateToProps = state => ({
-//   contacts: state.global
-// });
+
 
 export function mapDispatchToProps(dispatch) {
   return {

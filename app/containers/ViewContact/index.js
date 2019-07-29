@@ -12,7 +12,7 @@ export function ViewContact(props) {
     getCurrentContact,
     loading,
   } = props;
-  
+
   const currentContactId = params.contactId;
   useEffect(() => {
     getCurrentContact(currentContactId);
@@ -45,19 +45,7 @@ export function mapDispatchToProps(dispatch) {
 const mapStateToProps = state => ({
   loading: state.global.loading,
 });
-// ContactList.propTypes = {
-//   getContactList: PropTypes.func
-// };
 
-// // const mapStateToProps = state => ({
-// //   contacts: state.global
-// // });
-
-// export function mapDispatchToProps(dispatch) {
-//   return {
-//     getContactList: () => dispatch(getNews()),
-//   };
-// }
 
 const withConnect = connect(
   mapStateToProps,

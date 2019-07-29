@@ -10,7 +10,7 @@ import { FormattedMessage } from 'react-intl';
 import { Button } from 'reactstrap';
 
 import messages from './messages';
-import './index.scss';
+// import './index.scss';
 
 export default function HomePage() {
   return (
