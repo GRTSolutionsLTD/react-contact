@@ -1,7 +1,7 @@
 import { createSelector } from 'reselect';
-import { initialState } from './reducer';
+// import { initialState } from './reducer';
 
-const selectGlobal = state => state.global || initialState;
+const selectGlobal = state => state.global;
 
 const makeSelectContactList = () =>
   createSelector(

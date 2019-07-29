@@ -2,21 +2,24 @@
  * Create the store with dynamic reducers
  */
 
-import { createStore, applyMiddleware, compose } from 'redux';
-import { routerMiddleware } from 'connected-react-router';
+// Naomi remember: compose in imports and history next to ...
+
+import { createStore, applyMiddleware } from 'redux';
+// import { routerMiddleware } from 'connected-react-router';
 import createSagaMiddleware from 'redux-saga';
 import createReducer from './reducers';
+import rootSaga from './sagas/rootSaga'
 
-export default function configureStore(initialState = {}, history) {
-  let composeEnhancers = compose;
-  const reduxSagaMonitorOptions = {};
+export default function configureStore(initialState = {}) {
+  // let composeEnhancers = compose;
+  // const reduxSagaMonitorOptions = {};
 
   // If Redux Dev Tools and Saga Dev Tools Extensions are installed, enable them
   /* istanbul ignore next */
   if (process.env.NODE_ENV !== 'production' && typeof window === 'object') {
     /* eslint-disable no-underscore-dangle */
-    if (window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__)
-      composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({});
+    // if (window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__)
+    //   composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({});
 
     // NOTE: Uncomment the code below to restore support for Redux Saga
     // Dev Tools once it supports redux-saga version 1.x.x
@@ -27,23 +30,32 @@ export default function configureStore(initialState = {}, history) {
     /* eslint-enable */
   }
 
-  const sagaMiddleware = createSagaMiddleware(reduxSagaMonitorOptions);
+  const sagaMiddleware = createSagaMiddleware();
 
   // Create the store with two middlewares
   // 1. sagaMiddleware: Makes redux-sagas work
   // 2. routerMiddleware: Syncs the location/URL path to the state
-  const middlewares = [sagaMiddleware, routerMiddleware(history)];
+  // const middlewares = [sagaMiddleware, routerMiddleware(history)];
 
-  const enhancers = [applyMiddleware(...middlewares)];
+  // const enhancers = [applyMiddleware(...middlewares)];
+
+  // const store = createStore(
+  //   createReducer(),
+  //   initialState,
+  //   applyMiddleware(...middlewares),
+  //   composeEnhancers(...enhancers),
+  // );
 
   const store = createStore(
     createReducer(),
     initialState,
-    composeEnhancers(...enhancers),
+
+    applyMiddleware(sagaMiddleware),
   );
 
   // Extensions
-  store.runSaga = sagaMiddleware.run;
+  // store.runSaga = sagaMiddleware.run;
+  sagaMiddleware.run(rootSaga);
   store.injectedReducers = {}; // Reducer registry
   store.injectedSagas = {}; // Saga registry
 

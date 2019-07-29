@@ -1,48 +1,63 @@
-import React, { memo } from 'react';
+import React, { memo, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Helmet } from 'react-helmet';
-import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
 import ContactDetails from '../../components/ContactDetails';
-import { getContact } from '../App/actions';
-import { makeSelectContact } from '../App/selectors';
+import { getContactById } from '../App/actions';
 
 export function ViewContact(props) {
   const {
     match: { params },
     getCurrentContact,
-    currentContact,
+    loading,
   } = props;
+  
   const currentContactId = params.contactId;
-  getCurrentContact(currentContactId);
+  useEffect(() => {
+    getCurrentContact(currentContactId);
+  }, []);
 
-  if (currentContact !== undefined) {
+  if (loading === false) {
     return (
       <div>
         <Helmet>
           <title>ViewContact</title>
           <meta name="description" content="Description of ViewContact" />
         </Helmet>
-        <ContactDetails contact={currentContact} />
+        <ContactDetails />
       </div>
     );
   }
 }
 
 ViewContact.propTypes = {
+  loading: PropTypes.bool,
   getCurrentContact: PropTypes.func,
 };
 
 export function mapDispatchToProps(dispatch) {
   return {
-    getCurrentContact: contactId => dispatch(getContact(contactId)),
+    getCurrentContact: contactId => dispatch(getContactById(contactId)),
   };
 }
 
-const mapStateToProps = createStructuredSelector({
-  currentContact: makeSelectContact(),
+const mapStateToProps = state => ({
+  loading: state.global.loading,
 });
+// ContactList.propTypes = {
+//   getContactList: PropTypes.func
+// };
+
+// // const mapStateToProps = state => ({
+// //   contacts: state.global
+// // });
+
+// export function mapDispatchToProps(dispatch) {
+//   return {
+//     getContactList: () => dispatch(getNews()),
+//   };
+// }
 
 const withConnect = connect(
   mapStateToProps,
