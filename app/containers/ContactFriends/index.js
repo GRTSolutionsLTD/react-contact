@@ -28,24 +28,27 @@ export function ContactFriends(props) {
     return (
       <div className="col-centered" >
         <Helmet>
-          <title>ContactFriends</title>
+          <title className="jumbotron text-center">ContactFriends</title>
           <meta name="description" content="Description of ContactFriends" />
         </Helmet>
-        Hi {currentContact.name}!!
+        <p> Hi {currentContact.name}!!</p>  
         <h1>friends</h1>
         {
-          currentContact.friends.map(friend => <li key="{friend.id}" className="list-group-item"> {friend.name}</li>)
+          currentContact.friends.map(friend => <li key={friend.id} > {friend.name}</li>)
         }
         <form onSubmit={handleSubmit}>
-          <input
-            type="text"
-            value={friendName}
-            onChange={handleChange}
-            placeholder="Friendname"
-            required
-          />
-  
-          <input type="submit" className="btn btn-primary" value="add friend"></input>
+          <div className="form-group-sm">
+            <input
+              type="text"
+              value={friendName}
+              onChange={handleChange}
+              placeholder="Friendname"
+              required
+              className="form-control"
+            />
+            <input type="submit" className="btn btn-primary" value="add friend"></input>
+          </div>
+         
         </form>
         <br />
       </div>
