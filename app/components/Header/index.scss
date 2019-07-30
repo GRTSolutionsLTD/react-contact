@@ -46,10 +46,16 @@
 // } 
 @import '../../global-colors.scss';
 
-a:hover {
-    color:$contact-pink;
+ul li a:hover {
+    color:$contact-pink !important;
     text-decoration: none;
 }
+
+.nav-link{
+    font-size: 12px;
+    line-height: 20px;
+}
+
 img {
     width: 80px;
 }
@@ -58,17 +64,15 @@ img {
     height: 30px;
 }
 #download-button{
-    line-height: 100px;
-    height: 50px;
-    // text-align: center;
     color: white;
     border-color:$contact-pink;
     background-color:$contact-pink;
     border-radius: 25px;
-    border: solid $contact-pink;
-//     display: inline-block;
-    // padding: 12px 25px;
+    border: 2px solid $contact-pink;
+    // display: inline-block;
+    padding: 12px 25px;
     font-size: 18px;
+    letter-spacing: 1.8px;
 }
 
 #download-button:hover{
