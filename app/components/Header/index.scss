@@ -1,20 +1,51 @@
+// @import '../../global-colors.scss';
+
+// .Header {
+//     background-color:white;
+//     z-index: 999;
+// }
+// .row {
+//     height: 100px;
+// }
+// @media (min-width: 768px){
+//     .col-1 {
+//         font-size: 14px;
+//         text-align: center;
+//         color:black;
+//         line-height: 100px;
+//     }
+// }
+// a:hover {
+//     color:$contact-pink;
+//     text-decoration: none;
+// }
+// img {
+//     width: 80px;
+// }
+// .search{
+//     width: 30px;
+//     height: 30px;
+// }
+// #download-button{
+//     line-height: 100px;
+//     height: 50px;
+//     // text-align: center;
+//     color: white;
+//     border-color:$contact-pink;
+//     background-color:$contact-pink;
+//     border-radius: 25px;
+//     border: solid $contact-pink;
+// //     display: inline-block;
+//     // padding: 12px 25px;
+//     font-size: 18px;
+// }
+
+// #download-button:hover{
+//     background-color: white;
+//     color:$contact-pink;
+// } 
 @import '../../global-colors.scss';
 
-.Header {
-    background-color:white;
-    z-index: 999;
-}
-.row {
-    height: 100px;
-}
-@media (min-width: 768px){
-    .col-1 {
-        font-size: 14px;
-        text-align: center;
-        color:black;
-        line-height: 100px;
-    }
-}
 a:hover {
     color:$contact-pink;
     text-decoration: none;
@@ -27,20 +58,22 @@ img {
     height: 30px;
 }
 #download-button{
-    line-height: 90px;
-    height: 90px;
-    text-align: center;
+    line-height: 100px;
+    height: 50px;
+    // text-align: center;
     color: white;
     border-color:$contact-pink;
     background-color:$contact-pink;
     border-radius: 25px;
-    border: 2px solid $contact-pink;
-    display: inline-block;
-    padding: 12px 25px;
+    border: solid $contact-pink;
+//     display: inline-block;
+    // padding: 12px 25px;
     font-size: 18px;
 }
 
 #download-button:hover{
     background-color: white;
     color:$contact-pink;
-}
+} 
+
+
