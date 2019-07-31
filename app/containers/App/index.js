@@ -7,11 +7,11 @@ import ContactList from 'containers/ContactList/Loadable';
 import ViewContact from 'containers/ViewContact/Loadable';
 import ContactFriend from 'containers/ContactFriends/Loadable';
 import NotFoundPage from 'containers/NotFoundPage/Loadable';
-import { getNews } from '../App/actions'
+import { getNews } from '../App/actions';
 
 import GlobalStyle from '../../global-styles';
 
-export function App({getContactList}) {
+export function App({ getContactList }) {
   getContactList();
   return (
     <div>
@@ -27,8 +27,8 @@ export function App({getContactList}) {
   );
 }
 
-App.propTypes = {
-  getContactList: PropTypes.func
+ContactList.propTypes = {
+  getContactList: PropTypes.func,
 };
 
 // const mapStateToProps = state => ({
@@ -40,7 +40,10 @@ export function mapDispatchToProps(dispatch) {
     getContactList: () => dispatch(getNews()),
   };
 }
-const withConnect = connect(null, mapDispatchToProps);
+const withConnect = connect(
+  null,
+  mapDispatchToProps,
+);
 
 export default compose(
   withConnect,

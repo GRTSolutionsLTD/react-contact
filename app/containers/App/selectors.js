@@ -6,17 +6,13 @@ const selectGlobal = state => state.global;
 const makeSelectContactList = () =>
   createSelector(
     selectGlobal,
-    globalState => globalState.contacts
+    globalState => globalState.contacts,
   );
 
 const makeSelectContact = () =>
   createSelector(
     selectGlobal,
-    globalState => globalState.contact
+    globalState => globalState.contact,
   );
 
-export {
-  selectGlobal,
-  makeSelectContactList,
-  makeSelectContact
-};
+export { selectGlobal, makeSelectContactList, makeSelectContact };

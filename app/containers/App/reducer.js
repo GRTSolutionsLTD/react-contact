@@ -1,4 +1,4 @@
-// import produce from 'immer';
+import produce from 'immer';
 import { find } from 'lodash';
 import { GET_CONTACTS, GET_CONTACT } from './constants';
 // import * as contactsData from '../../data/contacts.json';
@@ -22,18 +22,17 @@ import { GET_CONTACTS, GET_CONTACT } from './constants';
 //     }
 //   });
 
-
 export function appReducer(state = [], action) {
   switch (action.type) {
     case GET_CONTACTS:
       return {
         ...state,
-        contacts: action.contacts
-      }
+        contacts: action.contacts,
+      };
     case GET_CONTACT:
       return {
         ...state,
-        contact: find(state.contacts, { _id: action.contactId })
+        contact: find(state.contacts, { _id: action.contactId }),
       };
     default:
       return state;
