@@ -1,4 +1,5 @@
 import { put, takeLatest, all } from 'redux-saga/effects';
+import { addFriendSuccess } from 'containers/App/actions';
 import {
   GET_CONTACTS,
   GET_NEWS,
@@ -13,22 +14,22 @@ function* fetchNews() {
   );
   yield put({ type: GET_CONTACTS, contacts });
 }
-function* addfriend(friebd, id) {
-  const contact = { id: friebd.id, name: friebd.name };
-  const json = yield fetch(`http://localhost:3001//api/contacts/add/${id}`, {
+function* addfriend({ friendName, currentContactId }) {
+  const friend = { friendName };
+  const data = yield fetch(`http://localhost:3001/api/contacts/add/${currentContactId}`, {
     headers: {
       Accept: 'application/json',
       'Content-Type': 'application/json',
     },
     method: 'post',
-    body: JSON.stringify(contact),
+    body: JSON.stringify(friend),
   }).then(response => response.json());
-  yield put({ type: 'addContact', json });
+  yield put(addFriendSuccess(data.contact, data.contacts));
 }
 
 function* fetchContactById(action) {
-  const contact = 
-  yield fetch(`http://localhost:3001/api/contacts/${action.contactId}`).then(response => response.json(), );    
+  const contact =
+    yield fetch(`http://localhost:3001/api/contacts/${action.contactId}`).then(response => response.json());
   yield put({ type: GET_CONTACT, contact });
 }
 

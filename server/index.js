@@ -62,15 +62,18 @@ app.post('/api/contacts/add/:id', (req, res) => {
       contactObj => contactObj._id === req.params.id,
     );
     if (contact !== undefined) {
-      const friendName = req.body;
-      contact.friends.push({ id: 99, name: friendName });
-      const newData = [...data, contact];
+      const { friendName } = req.body;
+      let lastId = 0;
+      if (contact.friends.length > 0)
+        lastId = contact.friends[contact.friends.length - 1].id + 1;
+      contact.friends.push({ id: lastId, name: friendName });
+      const newData = [...contacts];
       const jsonData = JSON.stringify(newData);
       fs.writeFile(jsonPath, jsonData, writeFileErr => {
         if (!writeFileErr) {
-          res.end(jsonData);
+          res.end(JSON.stringify({ contacts: newData, contact }));
         } else {
-          res.end(JSON.stringify(data));
+          res.end(JSON.stringify({ contacts: data, contact }));
         }
       });
     }
