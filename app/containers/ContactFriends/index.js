@@ -20,7 +20,7 @@ export function ContactFriends(props) {
   const currentContactId = params.contactId;
   getCurrentContact(currentContactId);
   const [friendName, setFriendName] = useState('');
-  const handleSubmit = event => {
+  const handleSubmit = () => {
     // event.preventDefault();
     setFriendName('');
     addingFriend(friendName, currentContactId);

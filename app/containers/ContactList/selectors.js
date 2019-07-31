@@ -1,5 +1,4 @@
 import { createSelector } from 'reselect';
-// import { initialState } from '../App/reducer';
 
 /**
  * Direct selector to the contactList state domain

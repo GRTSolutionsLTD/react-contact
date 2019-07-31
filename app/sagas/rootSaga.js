@@ -3,6 +3,8 @@ import {
   GET_CONTACTS,
   GET_NEWS,
   ADD_FRIEND,
+  GET_CONTACT_BY_ID,
+  GET_CONTACT
 } from '../containers/App/constants';
 
 function* fetchNews() {
@@ -23,10 +25,18 @@ function* addfriend(friebd, id) {
   }).then(response => response.json());
   yield put({ type: 'addContact', json });
 }
-export default function* rootSaga() {
-  yield all([actionWatcher()]);
+
+function* fetchContactById(action) {
+  const contact = 
+  yield fetch(`http://localhost:3001/api/contacts/${action.contactId}`).then(response => response.json(), );    
+  yield put({ type: GET_CONTACT, contact });
 }
+
 function* actionWatcher() {
   yield takeLatest(GET_NEWS, fetchNews);
   yield takeLatest(ADD_FRIEND, addfriend);
+  yield takeLatest(GET_CONTACT_BY_ID, fetchContactById)
+}
+export default function* rootSaga() {
+  yield all([actionWatcher()]);
 }

@@ -1,38 +1,26 @@
-import produce from 'immer';
-import { find } from 'lodash';
-import { GET_CONTACTS, GET_CONTACT } from './constants';
-// import * as contactsData from '../../data/contacts.json';
-
-// export const initialState = {
-//   contacts: contactsData.default,
-// };
-
-// const appReducer = (state = [], action) =>
-//   produce(state, draft => {
-//     switch (action.type) {
-//       case GET_CONTACTS:
-//         draft.contacts=action.contacts;
-//         break;
-//       case GET_NEWS:
-//         break;
-//       case GET_CONTACT:
-//         draft.contact = find(state.contacts, { _id: action.contactId });
-//         break;
-//       default:
-//     }
-//   });
+import {
+  GET_CONTACTS,
+  GET_CONTACT,
+  GET_CONTACT_BY_ID,
+  GET_NEWS,
+} from './constants';
 
 export function appReducer(state = [], action) {
   switch (action.type) {
+    case GET_NEWS:
+      return { ...state, loading: true };
     case GET_CONTACTS:
       return {
         ...state,
         contacts: action.contacts,
       };
+    case GET_CONTACT_BY_ID:
+      return { ...state, loading: true };
     case GET_CONTACT:
       return {
         ...state,
-        contact: find(state.contacts, { _id: action.contactId }),
+        loading: false,
+        contact: action.contact,
       };
     default:
       return state;

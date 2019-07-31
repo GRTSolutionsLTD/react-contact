@@ -1,22 +1,18 @@
-/**
- *
- * ContactDetails
- *
- */
-
 import React, { memo } from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { compose } from 'redux';
 import { Col, Row, Form, FormGroup, Label, Input } from 'reactstrap';
 import { NavLink } from 'react-router-dom';
-import PropTypes from 'prop-types';
-//import 'components/ContactDetails/contactDetails.scss'
-// import styled from 'styled-components';
+import 'components/ContactDetails/contactDetails.scss';
 
 function ContactDetails({ contact }) {
   const currentContact = contact;
-  const to= `/ContactFriends/${currentContact._id}`;
+  const to = `/ContactFriends/${currentContact._id}`;
+  const {name} = currentContact;
   return (
     <div>
-      <h1 align="center">{currentContact.name}</h1>
+      <h1 align="center">{name}</h1>
       <Form class="center">
         <Row form>
           <Col md={3}>
@@ -158,7 +154,17 @@ function ContactDetails({ contact }) {
 }
 
 ContactDetails.propTypes = {
-  contact: PropTypes,
+  contact: PropTypes.object,
 };
+const mapStateToProps = state => ({
+  contact: state.global.contact,
+});
 
-export default memo(ContactDetails);
+const withConnect = connect(
+  mapStateToProps,
+);
+export default compose(
+  withConnect,
+  memo,
+)(ContactDetails);
+

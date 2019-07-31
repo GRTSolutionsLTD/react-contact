@@ -1,4 +1,4 @@
-import { GET_CONTACTS, GET_CONTACT, GET_NEWS, ADD_FRIEND } from './constants';
+import { GET_CONTACTS, GET_CONTACT, GET_NEWS,ADD_FRIEND, GET_CONTACT_BY_ID } from './constants';
 
 /**
  * Load the contacts list
@@ -30,5 +30,11 @@ export function getContact(contactId) {
   return {
     type: GET_CONTACT,
     contactId,
+  };
+}
+export function getContactById(contactId) {
+  return {
+    type: GET_CONTACT_BY_ID,
+    contactId
   };
 }
