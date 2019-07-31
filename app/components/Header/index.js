@@ -49,9 +49,9 @@ function Header() {
         <li className="nav-item active">
           <Link title="search" to="/" className="nav-link"><FaSearch className="search"></FaSearch></Link>
         </li>
-        {/* <li className="nav-item active">
+        <li className="nav-item active">
           <Link to="/" className="col-1 align-self-center" id="download-button">DOWNLOAD</Link>
-        </li> */}
+        </li>
       </ul>
     </div>
   </nav>
