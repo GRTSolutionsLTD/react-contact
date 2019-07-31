@@ -13,6 +13,7 @@ import { getNews } from './actions';
 import Header from '../../components/Header'
 
 import GlobalStyle from '../../global-styles';
+import Footer from '../../components/Footer';
 
 export function App({ getContactList }) {
   getContactList();
@@ -28,6 +29,7 @@ export function App({ getContactList }) {
         <Route component={NotFoundPage} />
       </Switch>
       <GlobalStyle />
+      <Footer/>
     </div>
   );
 }

@@ -1,32 +1,28 @@
-/**
- *
- * Footer
- *
- */
-
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { memo } from 'react';
-// import PropTypes from 'prop-types';
-// import styled from 'styled-components';
-
-import { FormattedMessage } from 'react-intl';
-import messages from './messages';
 
 function Footer() {
   return (
     <div>
-      <FormattedMessage {...messages.header} />
+      <i className="fa fa-star-o"></i>
       <div>
         <div className="footer-container">
+          <div className="row text-center text-xs-center text-sm-left text-md-left ">
+            <div className="col-md-3 social mobile">
+              <a className="btn btn-social-icon btn-twitter">
+                <i className="fa fa-twitter"></i>
+                <i className="fa fa-facebook"></i>
+              </a>
+            </div>
+          </div>
           <div />
           <div>
-            <h5>hello</h5>
           </div>
-        </div>88888
+        </div>
       </div>
     </div>
   );
 }
 
 Footer.propTypes = {};
-
 export default memo(Footer);

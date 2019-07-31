@@ -1,4 +1,4 @@
-import { GET_CONTACTS, GET_CONTACT, GET_NEWS,ADD_FRIEND, GET_CONTACT_BY_ID } from './constants';
+import { GET_CONTACTS, GET_CONTACT, GET_NEWS, ADD_FRIEND, GET_CONTACT_BY_ID } from './constants';
 
 /**
  * Load the contacts list
