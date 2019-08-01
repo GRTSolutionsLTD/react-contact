@@ -2,7 +2,7 @@ import React, { memo } from 'react';
 import { Link } from 'react-router-dom';
 import "./index.scss"
 import { FaSearch } from 'react-icons/fa'
-// import pictureSource from "./cloud.png"
+import pictureSource from "./cloud.png"
 
 function Header() {
   // return <div className="nav-container Header">
@@ -19,15 +19,15 @@ function Header() {
   //   </div>
   // </div>
 
-  return <nav className="navbar navbar-expand-lg navbar-light bg-light">
-    <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+  return <nav className="navbar navbar-expand-lg navbar-light bg-white">
+    <button className="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span className="navbar-toggler-icon"></span>
     </button>
     <div className="collapse navbar-collapse" id="navbarNav">
-      <ul className="navbar-nav">
-        {/* <li className="nav-item active">
+      <ul className="navbar-nav mx-auto  align-items-center">
+        <li className="nav-item active">
           <Link to="/" className="nav-link"><img alt="" src={pictureSource}></img></Link>
-        </li> */}
+        </li>
         <li className="nav-item active">
           <Link title="home" to="/" className="nav-link">HOME</Link>
         </li>

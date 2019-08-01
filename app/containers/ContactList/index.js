@@ -50,7 +50,7 @@ export function ContactList({contacts}) {
               Header: "Options",
               Cell: (data) => {
                 const to = `/viewContact/${data.original._id}`;
-                return (<NavLink to={to} activeStyle={activeStyle} exact>
+                return (<NavLink className="btn btn-primary" to={to} activeStyle={activeStyle} exact>
                   View Contact
                 </NavLink>);
               }

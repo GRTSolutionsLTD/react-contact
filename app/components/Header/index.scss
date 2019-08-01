@@ -46,14 +46,21 @@
 // } 
 @import '../../global-colors.scss';
 
+.navbar-toggler-icon{
+    text-align: right;
+}
+
 ul li a:hover {
     color:$contact-pink !important;
     text-decoration: none;
 }
 
 .nav-link{
-    font-size: 12px;
+    font-size: 14px;
     line-height: 20px;
+}
+.nav-item{
+    padding-left: 20px;
 }
 
 img {
