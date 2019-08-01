@@ -9,10 +9,11 @@ import HomePage from 'containers/HomePage/Loadable';
 import ViewContact from 'containers/ViewContact/Loadable';
 import ContactFriend from 'containers/ContactFriends/Loadable';
 import NotFoundPage from 'containers/NotFoundPage/Loadable';
-import { getNews } from './actions'
+import { getNews } from './actions';
 import Header from '../../components/Header'
 
 import GlobalStyle from '../../global-styles';
+import Footer from '../../components/Footer';
 
 export function App({ getContactList }) {
   getContactList();
@@ -28,22 +29,24 @@ export function App({ getContactList }) {
         <Route component={NotFoundPage} />
       </Switch>
       <GlobalStyle />
+      <Footer/>
     </div>
   );
 }
 
 App.propTypes = {
-  getContactList: PropTypes.func
+  getContactList: PropTypes.func,
 };
-
-
 
 export function mapDispatchToProps(dispatch) {
   return {
     getContactList: () => dispatch(getNews()),
   };
 }
-const withConnect = connect(null, mapDispatchToProps);
+const withConnect = connect(
+  null,
+  mapDispatchToProps,
+);
 
 export default compose(
   withConnect,

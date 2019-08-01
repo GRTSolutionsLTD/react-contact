@@ -3,7 +3,7 @@
 const express = require('express');
 const logger = require('./logger');
 
-const fs = require("fs");
+const fs = require('fs');
 const uuidv1 = require('uuid/v1');
 const bodyParser = require('body-parser');
 
@@ -19,9 +19,11 @@ const { resolve } = require('path');
 const app = express();
 
 // configure the app to use bodyParser()
-app.use(bodyParser.urlencoded({
-  extended: true
-}));
+app.use(
+  bodyParser.urlencoded({
+    extended: true,
+  }),
+);
 app.use(bodyParser.json());
 
 // If you need a backend, e.g. an API, add your custom backend-specific middleware here
@@ -37,26 +39,51 @@ app.get('/api/contacts/list', (req, res) => {
 app.post('/api/contacts/add', (req, res) => {
   fs.readFile(jsonPath, 'utf8', (err, data) => {
     data = JSON.parse(data);
+
     const contact = req.body;
     contact._id = uuidv1();
     contact.index = data.length + 1;
     const newData = [...data, contact];
     const jsonData = JSON.stringify(newData);
 
-    fs.writeFile(jsonPath, jsonData, (writeFileErr) => {
+    fs.writeFile(jsonPath, jsonData, writeFileErr => {
       if (!writeFileErr) {
         res.end(jsonData);
       } else {
         res.end(JSON.stringify(data));
       }
-    })
+    });
   });
 });
-
+app.post('/api/contacts/add/:id', (req, res) => {
+  fs.readFile(jsonPath, 'utf8', (err, data) => {
+    const contacts = JSON.parse(data);
+    const contact = contacts.find(
+      contactObj => contactObj._id === req.params.id,
+    );
+    if (contact !== undefined) {
+      const { friendName } = req.body;
+      let lastId = 0;
+      if (contact.friends.length > 0)
+        lastId = contact.friends[contact.friends.length - 1].id + 1;
+      contact.friends.push({ id: lastId, name: friendName });
+      const newData = [...contacts];
+      const jsonData = JSON.stringify(newData);
+      fs.writeFile(jsonPath, jsonData, writeFileErr => {
+        if (!writeFileErr) {
+          res.end(JSON.stringify({ contacts: newData, contact }));
+        } else {
+          res.end(JSON.stringify({ contacts: data, contact }));
+        }
+      });
+    }
+  });
+});
 app.get('/api/contacts/:id', (req, res) => {
   fs.readFile(jsonPath, 'utf8', (err, data) => {
     const contacts = JSON.parse(data);
-    const contact = contacts.find(contactObj => contactObj._id === req.params.id) || {};
+    const contact =
+      contacts.find(contactObj => contactObj._id === req.params.id) || {};
     res.end(JSON.stringify(contact));
   });
 });
@@ -78,9 +105,6 @@ app.get('*.js', (req, res, next) => {
   res.set('Content-Encoding', 'gzip');
   next();
 });
-
-
-
 // Start your app.
 app.listen(port, host, async err => {
   if (err) {

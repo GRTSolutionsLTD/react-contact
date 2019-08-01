@@ -1,4 +1,4 @@
-import { GET_CONTACTS, GET_CONTACT, GET_NEWS,GET_CONTACT_BY_ID } from './constants';
+import { GET_CONTACTS, GET_CONTACT, GET_NEWS, ADD_FRIEND, ADD_FRIEND_SUCCESS , GET_CONTACT_BY_ID } from './constants';
 
 /**
  * Load the contacts list
@@ -8,14 +8,26 @@ import { GET_CONTACTS, GET_CONTACT, GET_NEWS,GET_CONTACT_BY_ID } from './constan
 export function getContacts(contacts) {
   return {
     type: GET_CONTACTS,
-    contacts
+    contacts,
+  };
+}
+export function addFriendToContact(friend, currentContactId) {
+  return {
+    type: ADD_FRIEND,
+    friendName: friend,
+    currentContactId,
+  };
+}
+export function addFriendSuccess(contact,contacts ) {
+  return {
+    type: ADD_FRIEND_SUCCESS,
+    contact,
+    contacts,
   };
 }
 export const getNews = () => ({
   type: GET_NEWS,
 });
-
-
 /**
  * Get the contact by Id
  *
@@ -24,7 +36,7 @@ export const getNews = () => ({
 export function getContact(contactId) {
   return {
     type: GET_CONTACT,
-    contactId
+    contactId,
   };
 }
 export function getContactById(contactId) {

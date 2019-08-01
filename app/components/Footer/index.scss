@@ -1,0 +1,11 @@
+@import '../../global-colors.scss';
+
+p{
+    background-color: $contact-pink;
+}
+i{
+    content:"\f099";
+}
+.fa-facebook-f:before, .fa-facebook:before {
+    content: "\f09a";
+}

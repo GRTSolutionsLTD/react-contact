@@ -15,9 +15,22 @@
     "address": "259 Meserole Avenue, Chesterfield, Kentucky, 1501",
     "birthday": "2018-07-10T11:43:13 -03:00",
     "friends": [
-      { "id": 0, "name": "Mccullough Salinas" },
-      { "id": 1, "name": "Alexis Meyers" },
-      { "id": 2, "name": "Bridgett Hall" }
+      {
+        "id": 0,
+        "name": "Mccullough Salinas"
+      },
+      {
+        "id": 1,
+        "name": "Alexis Meyers"
+      },
+      {
+        "id": 2,
+        "name": "Bridgett Hall"
+      },
+      {
+        "id": 3,
+        "name": "rivki test"
+      }
     ],
     "favoriteFruit": "apple"
   },
@@ -37,9 +50,18 @@
     "address": "481 Ruby Street, Nadine, Alaska, 1826",
     "birthday": "2017-05-11T05:00:17 -03:00",
     "friends": [
-      { "id": 0, "name": "Wilkerson Glover" },
-      { "id": 1, "name": "Glass Contreras" },
-      { "id": 2, "name": "Melva Slater" }
+      {
+        "id": 0,
+        "name": "Wilkerson Glover"
+      },
+      {
+        "id": 1,
+        "name": "Glass Contreras"
+      },
+      {
+        "id": 2,
+        "name": "Melva Slater"
+      }
     ],
     "favoriteFruit": "strawberry"
   },
@@ -59,9 +81,18 @@
     "address": "750 Sedgwick Place, Axis, Connecticut, 6100",
     "birthday": "2016-07-14T07:04:12 -03:00",
     "friends": [
-      { "id": 0, "name": "Cathleen Pennington" },
-      { "id": 1, "name": "Desiree Burris" },
-      { "id": 2, "name": "Manning Underwood" }
+      {
+        "id": 0,
+        "name": "Cathleen Pennington"
+      },
+      {
+        "id": 1,
+        "name": "Desiree Burris"
+      },
+      {
+        "id": 2,
+        "name": "Manning Underwood"
+      }
     ],
     "favoriteFruit": "banana"
   },
@@ -81,9 +112,18 @@
     "address": "875 Ebony Court, Glidden, Marshall Islands, 5084",
     "birthday": "2014-02-27T08:26:03 -02:00",
     "friends": [
-      { "id": 0, "name": "Forbes Bauer" },
-      { "id": 1, "name": "Floyd Sosa" },
-      { "id": 2, "name": "Jamie Campos" }
+      {
+        "id": 0,
+        "name": "Forbes Bauer"
+      },
+      {
+        "id": 1,
+        "name": "Floyd Sosa"
+      },
+      {
+        "id": 2,
+        "name": "Jamie Campos"
+      }
     ],
     "favoriteFruit": "apple"
   },
@@ -103,9 +143,18 @@
     "address": "502 Williams Court, Woodlake, Kansas, 3559",
     "birthday": "2014-01-30T12:06:14 -02:00",
     "friends": [
-      { "id": 0, "name": "Bradford Waters" },
-      { "id": 1, "name": "Steele Christensen" },
-      { "id": 2, "name": "Fulton Hewitt" }
+      {
+        "id": 0,
+        "name": "Bradford Waters"
+      },
+      {
+        "id": 1,
+        "name": "Steele Christensen"
+      },
+      {
+        "id": 2,
+        "name": "Fulton Hewitt"
+      }
     ],
     "favoriteFruit": "strawberry"
   },
@@ -125,9 +174,18 @@
     "address": "264 Channel Avenue, Roderfield, New Hampshire, 1009",
     "birthday": "2014-01-25T03:16:56 -02:00",
     "friends": [
-      { "id": 0, "name": "Mcdaniel Harvey" },
-      { "id": 1, "name": "Ladonna Webb" },
-      { "id": 2, "name": "Kate Walton" }
+      {
+        "id": 0,
+        "name": "Mcdaniel Harvey"
+      },
+      {
+        "id": 1,
+        "name": "Ladonna Webb"
+      },
+      {
+        "id": 2,
+        "name": "Kate Walton"
+      }
     ],
     "favoriteFruit": "apple"
   },
@@ -147,9 +205,18 @@
     "address": "542 Applegate Court, Rivera, Washington, 4873",
     "birthday": "2014-05-23T01:12:06 -03:00",
     "friends": [
-      { "id": 0, "name": "Blanchard Pearson" },
-      { "id": 1, "name": "Baldwin Bush" },
-      { "id": 2, "name": "Kaufman Bentley" }
+      {
+        "id": 0,
+        "name": "Blanchard Pearson"
+      },
+      {
+        "id": 1,
+        "name": "Baldwin Bush"
+      },
+      {
+        "id": 2,
+        "name": "Kaufman Bentley"
+      }
     ],
     "favoriteFruit": "strawberry"
   },
@@ -169,9 +236,18 @@
     "address": "396 Hart Place, Germanton, Texas, 6286",
     "birthday": "2018-12-26T06:51:04 -02:00",
     "friends": [
-      { "id": 0, "name": "Bird Hughes" },
-      { "id": 1, "name": "Karina Jacobs" },
-      { "id": 2, "name": "Puckett Cantu" }
+      {
+        "id": 0,
+        "name": "Bird Hughes"
+      },
+      {
+        "id": 1,
+        "name": "Karina Jacobs"
+      },
+      {
+        "id": 2,
+        "name": "Puckett Cantu"
+      }
     ],
     "favoriteFruit": "banana"
   },
@@ -188,9 +264,17 @@
     "phone": "+1 (954) 410-3154",
     "address": "396 Hart Place, Germanton, Texas, 6286",
     "birthday": "2018-12-26T06:51:04 -02:00",
-    "friends": [{ "id": 0, "name": "Bird Hughes" }],
+    "friends": [
+      {
+        "id": 0,
+        "name": "Bird Hughes"
+      }
+    ],
     "favoriteFruit": "banana",
     "_id": "8af3a820-ae33-11e9-b851-09afa85c424c"
   },
-  { "_id": "a1c477d0-aeb2-11e9-ba7f-75df43874f1a", "index": 10 }
+  {
+    "_id": "a1c477d0-aeb2-11e9-ba7f-75df43874f1a",
+    "index": 10
+  }
 ]
